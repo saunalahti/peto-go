@@ -5,6 +5,6 @@ type Event struct {
 	Location    string `json:"location"`
 	LocationInt string `json:"location_int,omitempty"`
 	Incident    string `json:"incident"`
-	Severity    string `json:"severity,omitempty"`
+	Severity    int    `json:"severity,omitempty"`
 	Datetime    string `json:"date"`
 }

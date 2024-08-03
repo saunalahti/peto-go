@@ -34,7 +34,7 @@ func Scrape() ([]models.Event, error) {
 
 				event := models.Event{
 					Location: locations[0],
-					Incident: incidentParts[0],
+					Incident: strings.TrimSpace(incidentParts[0]),
 					Datetime: lines[2],
 				}
 
@@ -43,7 +43,16 @@ func Scrape() ([]models.Event, error) {
 				}
 
 				if len(incidentParts) == 2 {
-					event.Severity = strings.TrimSpace(incidentParts[1])
+					severity := strings.TrimSpace(incidentParts[1])
+
+					switch severity {
+					case "pieni":
+						event.Severity = 3
+					case "keskisuuri":
+						event.Severity = 2
+					case "suuri":
+						event.Severity = 1
+					}
 				}
 
 				event.ID = util.GenerateID(event.Location, event.Datetime)
