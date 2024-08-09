@@ -11,6 +11,8 @@ services:
       interval: 30s
       timeout: 10s
       retries: 3
+    environment:
+      - SCRAPE_URL=
     mem_limit: 512m
     cpus: '0.20'
     networks:

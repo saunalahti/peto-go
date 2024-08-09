@@ -2,11 +2,13 @@ package main
 
 import (
 	"fmt"
+	"os"
 	"peto/models"
 	"peto/util"
 	"strings"
 
 	"github.com/gocolly/colly/v2"
+	"github.com/joho/godotenv"
 )
 
 func splitByDelimiters(r rune) bool {
@@ -15,6 +17,14 @@ func splitByDelimiters(r rune) bool {
 
 func Scrape() ([]models.Event, error) {
 	var events []models.Event
+
+	godotenv.Load(".env")
+
+	url, urlExist := os.LookupEnv("SCRAPE_URL")
+
+	if !urlExist {
+		url = "https://www.peto-media.fi"
+	}
 
 	var respError error
 
@@ -72,7 +82,7 @@ func Scrape() ([]models.Event, error) {
 		respError = err
 	})
 
-	c.Visit("https://www.peto-media.fi/")
+	c.Visit(url)
 
 	if respError != nil {
 		return []models.Event{}, respError
