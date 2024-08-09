@@ -8,7 +8,6 @@ import (
 	"strings"
 
 	"github.com/gocolly/colly/v2"
-	"github.com/joho/godotenv"
 )
 
 func splitByDelimiters(r rune) bool {
@@ -17,8 +16,6 @@ func splitByDelimiters(r rune) bool {
 
 func Scrape() ([]models.Event, error) {
 	var events []models.Event
-
-	godotenv.Load(".env")
 
 	url, urlExist := os.LookupEnv("SCRAPE_URL")
 
