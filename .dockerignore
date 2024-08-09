@@ -8,9 +8,13 @@ vendor/
 # Exclude "build-time" ignore files.
 .dockerignore
 .gcloudignore
+.github
 
 # Exclude git history and configuration.
 .gitignore
 .gitattributes
 
 readme.md
+
+docker-compose.yml
+.env*
