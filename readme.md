@@ -5,6 +5,10 @@ Peto-go fetches the peto-media.fi website every 30 seconds, and updates the in-m
 
 This can be used to develop for example a website or mobile app based on the data.
 
+## Hosted instance
+Free to use instance of peto-go. Hosted on a cheap Scaleway server and extensively cached by Cloudflare. No request limits
+- https://peto.sk1d.me/api/incidents
+
 ## Routes 
 ### /api/incidents
 This endpoint shows the JSON data that is collected on the In-Memory Cache.
